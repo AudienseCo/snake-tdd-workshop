@@ -2,10 +2,11 @@ import { SnakeDirections } from './model/Snake'
 import Snake from './model/Snake'
 import Board from './model/Board'
 
+const VELOCITY = 35
 const canvas = document.getElementById('snake-game')
 const ctx = canvas.getContext('2d');
-const width = 50
-const height = 50
+const width = 30
+const height = 30
 const blockSize = canvas.width / width
 const snake = new Snake({ initialPosition: [[1, 1], [0, 1]], initialDirection: SnakeDirections.RIGHT })
 const board = new Board({ snake, width, height })
@@ -19,15 +20,23 @@ document.addEventListener('keydown', (e) => {
     }
 })
 
+
 function startGame() {
+    let lastDraw = Date.now()
+    
     function gameLoop() {
-        board.update()
-        if (!board.hasCollision()) {
+        const now = Date.now();
+        const delta = now - lastDraw;
+
+        if (delta > VELOCITY && !board.hasCollision()) {
+            board.update()            
             draw()
-            setTimeout(gameLoop, 50)
+            lastDraw = now
         }
+        requestAnimationFrame(gameLoop)
+        
     }
-    gameLoop()
+    requestAnimationFrame(gameLoop)
 }
 
 const drawBlock = (color, x, y) => {
