@@ -15,8 +15,13 @@ Once the time is finished or people have the logic implemented, we'll pass to th
 ### Getting ready
 You'll need node version 8 installed. You can switch between node's version with [nvm](https://github.com/creationix/nvm).
 
-Once you have the right version of node, just intall dependencies:
+Once you have the right version of node, just intall clone the repository and create a local branch.
 
+```
+git checkout -b my-solution origin/master
+```
+
+Then install dependencies
 ```
 npm install
 ```
