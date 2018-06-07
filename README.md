@@ -32,4 +32,17 @@ npm run test-watch
 ```
 
 ### Next step?
-Comming soon...
+Merge the branch `rendering` (probably you'll need to commit your code)
+```
+git merge origin/rendering
+```
+
+Build and open the web app
+```
+npm start
+```
+
+If you need to update the code, just rebuild it again
+```
+npm run build
+```
